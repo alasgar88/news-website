@@ -133,7 +133,6 @@ text-align: center;
 .news-list{
   max-width: 1075px;
   width: 90%;
-  min-height: 710px;
   display: flex;
   flex-wrap: wrap;
   position: relative;
