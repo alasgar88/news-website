@@ -4,6 +4,7 @@ import { getData } from "../features/news/newsSlice";
 import { setCategoryName } from "../features/category/categorySlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { capitalizeFirstLetter } from "../utils/utils";
 
 const NewsCategory = () => {
   const { categoryName } = useSelector((store) => store.category);
@@ -28,7 +29,9 @@ const NewsCategory = () => {
                 : "category-button"
             }`}
           >
-            <h3 className='category-name'>{category.name}</h3>
+            <h3 className='category-name'>
+              {capitalizeFirstLetter(category.name)}
+            </h3>
           </button>
         );
       })}
