@@ -565,6 +565,48 @@ top: -250px;
   cursor: pointer;
 }
 
+.error-page{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background:white ;
+  /* background: red; */
+}
+
+
+.image-container{
+  position: relative;
+  top:-50px;
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
+  object-fit: cover;
+  background: yellow;
+  border-radius: 5px;
+}
+
+.image{
+  position:absolute;
+  width: 100%;
+  height: 100%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.error-btn{
+  position: relative;
+  top:-20px;
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
 
 
 

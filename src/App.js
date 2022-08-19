@@ -1,7 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Landing from "./pages/Landing";
-import Detail from "./pages/Detail";
-import Category from "./pages/Category";
+import { Landing, Detail, Category, Error } from "./pages";
 
 function App() {
   return (
@@ -9,8 +7,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Landing />} />
         <Route path='/:category' element={<Category />} />
-
         <Route path='/:category/:newsId' element={<Detail />} />
+        <Route path='*' element={<Error />} />
       </Routes>
     </BrowserRouter>
   );
