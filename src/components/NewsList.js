@@ -43,7 +43,7 @@ const NewsList = () => {
   return (
     <>
       <div className='news-list'>
-        {newsData.map((item) => {
+        {newsData?.map((item) => {
           return <SingleNewsCard {...item} key={item?.id} />;
         })}
       </div>
