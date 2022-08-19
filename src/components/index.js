@@ -4,6 +4,8 @@ import NewsList from "./NewsList";
 import SingleNewsCard from "./SingleNewsCard";
 import SingleNewsDetail from "./SingleNewsDetail";
 import Loading from "./Loading";
+import SimilarNewsList from "./SimilarNewsList";
+import SimilarNewsItem from "./SimilarNewsItem";
 
 export {
   NewsCategory,
@@ -12,4 +14,6 @@ export {
   SingleNewsCard,
   Loading,
   SingleNewsDetail,
+  SimilarNewsList,
+  SimilarNewsItem,
 };

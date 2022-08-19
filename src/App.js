@@ -1,22 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
 import Detail from "./pages/Detail";
-import { getData } from "./features/news/newsSlice";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import Category from "./pages/Category";
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    try {
-      dispatch(getData());
-    } catch (error) {}
-  }, [dispatch]);
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Landing />} />
+        <Route path='/:category' element={<Category />} />
+
         <Route path='/:category/:newsId' element={<Detail />} />
       </Routes>
     </BrowserRouter>

@@ -12,3 +12,10 @@ export const paginate = (news) => {
 export const capitalizeFirstLetter = (string) => {
   return string[0].toUpperCase() + string.slice(1);
 };
+
+export const setNewId = (news) => {
+  var myData = news.map((item, index) => {
+    return { ...item, newId: index + 100 };
+  });
+  return myData;
+};

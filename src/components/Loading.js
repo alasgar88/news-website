@@ -1,10 +1,11 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { Header } from "./";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { useParams } from "react-router-dom";
 
 const Loading = () => {
-  const { categoryName } = useSelector((state) => state.category);
+  const { category } = useParams();
+  const categoryName = !category ? "all" : category;
   return (
     <div className='loading'>
       <Header />

@@ -1,11 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { paginate } from "../../utils/utils";
+import { addNewsToLocalStorage } from "../../utils/localStorage";
+import { setNewId } from "../../utils/utils";
 
 const initialState = {
   isLoading: false,
   newsObject: [],
   data: [],
+  paginatedData: [],
 };
 
 export const getData = createAsyncThunk(
@@ -15,7 +18,6 @@ export const getData = createAsyncThunk(
       const resp = await axios(
         `https://inshorts.deta.dev/news?category=${category}`
       );
-
       return resp.data;
     } catch (error) {}
   }
@@ -35,7 +37,9 @@ const newsSlice = createSlice({
     },
     [getData.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
-      state.data = paginate(payload.data);
+      state.data = setNewId(payload.data);
+      state.paginatedData = paginate(setNewId(payload.data));
+      addNewsToLocalStorage("newsData", setNewId(payload.data));
     },
     [getData.rejected]: (state, { payload }) => {
       state.isLoading = false;

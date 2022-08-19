@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { SingleNewsCard } from ".";
 
 const NewsList = () => {
-  const { data, isLoading } = useSelector((store) => store.news);
+  const { paginatedData, isLoading } = useSelector((store) => store.news);
   const [newsData, setNewsData] = useState([]);
   const [page, setPage] = useState(0);
 
@@ -14,7 +14,7 @@ const NewsList = () => {
   const nextPage = () => {
     setPage((oldPage) => {
       let nextPage = oldPage + 1;
-      if (nextPage > data.length - 1) {
+      if (nextPage > paginatedData.length - 1) {
         nextPage = 0;
       }
       return nextPage;
@@ -24,7 +24,7 @@ const NewsList = () => {
     setPage((oldPage) => {
       let prevPage = oldPage - 1;
       if (prevPage < 0) {
-        prevPage = data.length - 1;
+        prevPage = paginatedData.length - 1;
       }
       return prevPage;
     });
@@ -38,8 +38,8 @@ const NewsList = () => {
 
   useEffect(() => {
     if (isLoading) return;
-    setNewsData(data[page]);
-  }, [isLoading, page, data]);
+    setNewsData(paginatedData[page]);
+  }, [isLoading, page, paginatedData]);
   return (
     <>
       <div className='news-list'>
@@ -58,7 +58,7 @@ const NewsList = () => {
           >
             Prev
           </button>
-          {data.map((_, index) => {
+          {paginatedData.map((_, index) => {
             return (
               <button
                 key={index}
