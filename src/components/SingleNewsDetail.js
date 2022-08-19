@@ -1,4 +1,4 @@
-import React, from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { BsClock } from "react-icons/bs";
 import { HiOutlineUser } from "react-icons/hi";
