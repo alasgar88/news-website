@@ -10,6 +10,7 @@ const NewsList = () => {
   const handleClick = (index) => {
     setPage(index);
   };
+  console.log(paginatedData, "bura");
 
   const nextPage = () => {
     setPage((oldPage) => {
@@ -47,44 +48,46 @@ const NewsList = () => {
           return <SingleNewsCard {...item} key={item?.id} />;
         })}
       </div>
-      <div className='footer'>
-        <div className='pagination'>
-          <button
-            className='prev'
-            onClick={() => {
-              prevPage();
-              scrollTop();
-            }}
-          >
-            Prev
-          </button>
-          {paginatedData.map((_, index) => {
-            return (
-              <button
-                key={index}
-                className={`paginate-button ${
-                  index === page && "paginate-active"
-                }`}
-                onClick={() => {
-                  handleClick(index);
-                  scrollTop();
-                }}
-              >
-                {index + 1}
-              </button>
-            );
-          })}
-          <button
-            className='next'
-            onClick={() => {
-              nextPage();
-              scrollTop();
-            }}
-          >
-            Prev
-          </button>
+      {isLoading && (
+        <div className='footer'>
+          <div className='pagination'>
+            <button
+              className='prev'
+              onClick={() => {
+                prevPage();
+                scrollTop();
+              }}
+            >
+              Prev
+            </button>
+            {paginatedData.map((_, index) => {
+              return (
+                <button
+                  key={index}
+                  className={`paginate-button ${
+                    index === page && "paginate-active"
+                  }`}
+                  onClick={() => {
+                    handleClick(index);
+                    scrollTop();
+                  }}
+                >
+                  {index + 1}
+                </button>
+              );
+            })}
+            <button
+              className='next'
+              onClick={() => {
+                nextPage();
+                scrollTop();
+              }}
+            >
+              Prev
+            </button>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
