@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, from "react";
 import { useSelector } from "react-redux";
 import { BsClock } from "react-icons/bs";
 import { HiOutlineUser } from "react-icons/hi";
 import { useParams } from "react-router-dom";
 import {
-  addNewsToLocalStorage,
   getNewsFromLocalStorage,
 } from "../utils/localStorage";
 
@@ -15,8 +14,7 @@ const SingleNewsDetail = () => {
   if (data.length === 0) {
     data = getNewsFromLocalStorage("newsData");
   }
-  data = data.find((news) => news.newId == newsId);
-
+ data = data.find((news) => parseInt(news.newId) === parseInt(newsId));
   return (
     <div className='news-detail'>
       <div className='detail-image-container'>
